@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="{% url 'shorten' %}" method='POST'>
+    {% csrf_token %}
+    <input type="submit">
+    <input type="text" name='user_url'>    
+</form>
+
+{% if shortened_url %}
+    <a href="http://localhost:8000/redirect/{{ shortened_url.url_hash }}">shortened url</a>
+{% endif %}
+
+
+
+{% endblock %}
